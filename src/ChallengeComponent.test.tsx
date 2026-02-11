@@ -6,7 +6,7 @@ import { ChallengeComponent } from './ChallengeComponent';
 describe('ChallengeComponent', () => {
   it('renders three columns', () => {
     render(<ChallengeComponent />);
-    expect(screen.getByText('Todo')).toBeInTheDocument();
+    expect(screen.getByText('To Do')).toBeInTheDocument();
     expect(screen.getByText('In Progress')).toBeInTheDocument();
     expect(screen.getByText('Done')).toBeInTheDocument();
   });
@@ -15,8 +15,8 @@ describe('ChallengeComponent', () => {
     const user = userEvent.setup();
     render(<ChallengeComponent />);
 
-    const input = screen.getByPlaceholderText('Add a new todo...');
-    const addButton = screen.getByRole('button', { name: 'Add' });
+    const input = screen.getByPlaceholderText('Add Task');
+    const addButton = screen.getByRole('button', { name: '+' });
 
     await user.type(input, 'Buy groceries');
     await user.click(addButton);
@@ -29,7 +29,7 @@ describe('ChallengeComponent', () => {
     const user = userEvent.setup();
     render(<ChallengeComponent />);
 
-    const addButton = screen.getByRole('button', { name: 'Add' });
+    const addButton = screen.getByRole('button', { name: '+' });
     await user.click(addButton);
 
     // No items should appear — just the three column headers
@@ -42,8 +42,8 @@ describe('ChallengeComponent', () => {
     render(<ChallengeComponent />);
 
     // Add an item
-    await user.type(screen.getByPlaceholderText('Add a new todo...'), 'Task A');
-    await user.click(screen.getByRole('button', { name: 'Add' }));
+    await user.type(screen.getByPlaceholderText('Add Task'), 'Task A');
+    await user.click(screen.getByRole('button', { name: '+' }));
 
     // Move right: Todo -> In Progress
     const moveRight = screen.getByLabelText('Move "Task A" right');
@@ -62,8 +62,8 @@ describe('ChallengeComponent', () => {
     render(<ChallengeComponent />);
 
     // Add item and move to Done
-    await user.type(screen.getByPlaceholderText('Add a new todo...'), 'Task B');
-    await user.click(screen.getByRole('button', { name: 'Add' }));
+    await user.type(screen.getByPlaceholderText('Add Task'), 'Task B');
+    await user.click(screen.getByRole('button', { name: '+' }));
     await user.click(screen.getByLabelText('Move "Task B" right'));
     await user.click(screen.getByLabelText('Move "Task B" right'));
 
@@ -80,8 +80,8 @@ describe('ChallengeComponent', () => {
     const user = userEvent.setup();
     render(<ChallengeComponent />);
 
-    await user.type(screen.getByPlaceholderText('Add a new todo...'), 'Task C');
-    await user.click(screen.getByRole('button', { name: 'Add' }));
+    await user.type(screen.getByPlaceholderText('Add Task'), 'Task C');
+    await user.click(screen.getByRole('button', { name: '+' }));
 
     const moveLeft = screen.getByLabelText('Move "Task C" left');
     expect(moveLeft).toBeDisabled();
@@ -92,8 +92,8 @@ describe('ChallengeComponent', () => {
     render(<ChallengeComponent />);
 
     // Add and move to Done
-    await user.type(screen.getByPlaceholderText('Add a new todo...'), 'Task D');
-    await user.click(screen.getByRole('button', { name: 'Add' }));
+    await user.type(screen.getByPlaceholderText('Add Task'), 'Task D');
+    await user.click(screen.getByRole('button', { name: '+' }));
     await user.click(screen.getByLabelText('Move "Task D" right'));
     await user.click(screen.getByLabelText('Move "Task D" right'));
 

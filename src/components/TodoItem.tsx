@@ -16,26 +16,34 @@ export function TodoItem({
   isLastColumn,
 }: TodoItemProps) {
   return (
-    <div className="flex items-center justify-between bg-white rounded-lg p-3 shadow-sm border border-gray-200">
-      <span className="text-gray-800 truncate flex-1 mr-2">{item.text}</span>
-      <div className="flex gap-1 shrink-0">
-        <button
-          onClick={() => onMoveLeft(item.id)}
-          disabled={isFirstColumn}
-          aria-label={`Move "${item.text}" left`}
-          className="px-2 py-1 rounded text-sm font-bold text-gray-600 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-        >
-          &larr;
-        </button>
-        <button
-          onClick={() => onMoveRight(item.id)}
-          disabled={isLastColumn}
-          aria-label={`Move "${item.text}" right`}
-          className="px-2 py-1 rounded text-sm font-bold text-gray-600 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-        >
-          &rarr;
-        </button>
-      </div>
+    <div className="flex items-center gap-3 bg-white rounded-lg p-3 shadow-sm border border-gray-200">
+      <button
+        onClick={() => onMoveLeft(item.id)}
+        disabled={isFirstColumn}
+        aria-label={`Move "${item.text}" left`}
+        className={`w-10 h-10 rounded flex items-center justify-center text-white text-lg font-bold shrink-0 transition-colors ${
+          isFirstColumn
+            ? 'bg-red-300 cursor-not-allowed'
+            : 'bg-red-800 hover:bg-red-900'
+        }`}
+      >
+        &larr;
+      </button>
+      <span className="flex-1 text-center text-gray-800 truncate">
+        {item.text}
+      </span>
+      <button
+        onClick={() => onMoveRight(item.id)}
+        disabled={isLastColumn}
+        aria-label={`Move "${item.text}" right`}
+        className={`w-10 h-10 rounded flex items-center justify-center text-white text-lg font-bold shrink-0 transition-colors ${
+          isLastColumn
+            ? 'bg-gray-400 cursor-not-allowed'
+            : 'bg-green-800 hover:bg-green-900'
+        }`}
+      >
+        &rarr;
+      </button>
     </div>
   );
 }

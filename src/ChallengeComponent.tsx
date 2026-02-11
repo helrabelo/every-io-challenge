@@ -39,7 +39,6 @@ export function ChallengeComponent() {
 
   return (
     <div className="p-8 flex flex-col gap-6">
-      <AddTodoForm onAdd={addTodo} />
       <div className="flex gap-6">
         {COLUMNS.map((col, i) => (
           <Column
@@ -53,6 +52,7 @@ export function ChallengeComponent() {
           />
         ))}
       </div>
+      <AddTodoForm onAdd={addTodo} />
     </div>
   );
 }

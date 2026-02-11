@@ -19,9 +19,11 @@ export function Column({
   isLastColumn,
 }: ColumnProps) {
   return (
-    <div className="flex-1 min-w-0">
-      <h2 className="text-lg font-bold mb-4 text-gray-800">{title}</h2>
-      <div className="flex flex-col gap-2 min-h-[200px] bg-gray-100 rounded-lg p-3">
+    <div className="flex-1 min-w-0 bg-white rounded-2xl border border-gray-200 shadow-sm p-4">
+      <h2 className="text-xl font-bold text-center mb-4 text-gray-800">
+        {title}
+      </h2>
+      <div className="flex flex-col gap-3 min-h-[300px]">
         {items.map((item) => (
           <TodoItem
             key={item.id}

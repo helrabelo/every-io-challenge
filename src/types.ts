@@ -9,7 +9,7 @@ export interface TodoItem {
 export const COLUMN_ORDER: TodoStatus[] = ['todo', 'inProgress', 'done'];
 
 export const COLUMNS: { key: TodoStatus; label: string }[] = [
-  { key: 'todo', label: 'Todo' },
+  { key: 'todo', label: 'To Do' },
   { key: 'inProgress', label: 'In Progress' },
   { key: 'done', label: 'Done' },
 ];
