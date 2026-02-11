@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { COLUMNS, COLUMN_ORDER, TodoItem } from './types';
 import { Column } from './components/Column';
+import { AddTodoForm } from './components/AddTodoForm';
 
 export function ChallengeComponent() {
   const [items, setItems] = useState<TodoItem[]>([]);
@@ -27,19 +28,31 @@ export function ChallengeComponent() {
     );
   }
 
+  function addTodo(text: string) {
+    const newItem: TodoItem = {
+      id: crypto.randomUUID(),
+      text,
+      status: 'todo',
+    };
+    setItems((prev) => [...prev, newItem]);
+  }
+
   return (
-    <div className="flex gap-6 p-8">
-      {COLUMNS.map((col, i) => (
-        <Column
-          key={col.key}
-          title={col.label}
-          items={items.filter((item) => item.status === col.key)}
-          onMoveLeft={moveLeft}
-          onMoveRight={moveRight}
-          isFirstColumn={i === 0}
-          isLastColumn={i === COLUMNS.length - 1}
-        />
-      ))}
+    <div className="p-8 flex flex-col gap-6">
+      <AddTodoForm onAdd={addTodo} />
+      <div className="flex gap-6">
+        {COLUMNS.map((col, i) => (
+          <Column
+            key={col.key}
+            title={col.label}
+            items={items.filter((item) => item.status === col.key)}
+            onMoveLeft={moveLeft}
+            onMoveRight={moveRight}
+            isFirstColumn={i === 0}
+            isLastColumn={i === COLUMNS.length - 1}
+          />
+        ))}
+      </div>
     </div>
   );
 }
