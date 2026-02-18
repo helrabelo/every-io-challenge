@@ -12,16 +12,6 @@ The biggest factor will be your code:
 - How did you organize your components.
 - Are there any bugs.
 
-## Before you start
-
-Feel free to fork this repo. If you want to keep things private, that's understandable and we are totally okay with that. Once you finish send an invite to these users:
-
-- @barrypeterson
-- @jmatusevich
-- @falecci
-- @danfsd
-- @mssodhi
-
 ## Requirements
 
 See the [prototype](https://www.figma.com/proto/kd49ArXbBt0vi1kBSLkmC1/Code-Challenge?node-id=1%3A2&scaling=min-zoom&page-id=0%3A1) for an example.
